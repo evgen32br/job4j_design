@@ -12,8 +12,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 env:
   global:
-  - name: Codecov
-    uses: codecov/codecov-action@v3.1.0
+    - CODECOV_TOKEN ="9fab70eb-fe82-474f-9dcf-72157df48197"
 
 # Отправлять уведомление на почту youremail@smtp.ru (Изменить на свою) если сборка упала
 notifications:
