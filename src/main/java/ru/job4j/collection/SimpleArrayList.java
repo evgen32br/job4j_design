@@ -7,9 +7,14 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     private T[] container;
     private int size;
     private int modCount;
+    private static final int DEFAULT_CAPACITY = 10;
 
     public SimpleArrayList(int capacity) {
-        this.container = (T[]) new Object[capacity];
+        if (capacity == 0) {
+            this.container = (T[]) new Object[DEFAULT_CAPACITY];
+        } else {
+            this.container = (T[]) new Object[capacity];
+        }
     }
 
     @Override
@@ -23,16 +28,14 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T set(int index, T newValue) {
-        Objects.checkIndex(index, size);
-        T value = container[index];
+        T value = get(index);
         container[index] = newValue;
         return value;
     }
 
     @Override
     public T remove(int index) {
-        Objects.checkIndex(index, size);
-        T value = container[index];
+        T value = get(index);
         System.arraycopy(
                 container,
                 index + 1,
