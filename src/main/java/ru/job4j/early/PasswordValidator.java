@@ -47,7 +47,7 @@ public class PasswordValidator {
         return password;
     }
 
-    private static Boolean number(char[] password) {
+    private static boolean number(char[] password) {
         boolean rsl = false;
         for (char c : password) {
             if (Character.isDigit(c)) {
@@ -58,7 +58,7 @@ public class PasswordValidator {
         return rsl;
     }
 
-    private static Boolean registerLower(char[] password) {
+    private static boolean registerLower(char[] password) {
         boolean rsl = false;
         for (char c : password) {
             if (Character.isLowerCase(c)) {
@@ -69,7 +69,7 @@ public class PasswordValidator {
         return rsl;
     }
 
-    private static Boolean registerUpper(char[] password) {
+    private static boolean registerUpper(char[] password) {
         boolean rsl = false;
         for (char c : password) {
             if (Character.isUpperCase(c)) {
@@ -80,7 +80,7 @@ public class PasswordValidator {
         return rsl;
     }
 
-    private static Boolean checkingSymbol(char[] password) {
+    private static boolean checkingSymbol(char[] password) {
         boolean rsl = false;
         for (char c : password) {
             if (!Character.isLetterOrDigit(c)) {
@@ -91,7 +91,7 @@ public class PasswordValidator {
         return rsl;
     }
 
-    private static Boolean substring(String password) {
+    private static boolean substring(String password) {
         boolean rsl = false;
         password = password.toLowerCase(Locale.ROOT);
         for (String s : SUBSTRING) {
