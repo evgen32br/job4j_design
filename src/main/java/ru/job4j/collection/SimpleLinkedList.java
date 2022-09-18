@@ -7,20 +7,20 @@ import java.util.Objects;
 
 public class SimpleLinkedList<E> implements LinkedList<E> {
     private Node<E> first;
-    private Node<E> last;
     private int size = 0;
     private int modCount = 0;
 
     @Override
     public void add(E value) {
-        Node<E> l = last;
-        Node<E> newNode = new Node<>(l, value, null);
-        if (l == null) {
+        Node<E> newNode = new Node<>(value, null);
+        if (first == null) {
             first = newNode;
-            last = first;
         } else {
-            l.next = newNode;
-            last = newNode;
+            Node<E> tail = first;
+            while (tail.next != null) {
+                tail = tail.next;
+            }
+            tail.next = newNode;
         }
         size++;
         modCount++;
@@ -65,12 +65,10 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
     private static class Node<E> {
         E item;
         Node<E> next;
-        Node<E> prev;
 
-        Node(Node<E> prev, E element, Node<E> next) {
+        Node(E element, Node<E> next) {
             this.item = element;
             this.next = next;
-            this.prev = prev;
         }
     }
 }
