@@ -44,4 +44,36 @@ class ForwardLinkedTest {
         Iterator<Integer> it = linked.iterator();
         assertThat(it.next()).isEqualTo(2);
     }
+
+    @Test
+    void addFirst() {
+        ForwardLinked<Integer> forward = new ForwardLinked<>();
+        forward.addFirst(1);
+        forward.addFirst(2);
+        forward.addFirst(3);
+        forward.addFirst(4);
+        Iterator<Integer> it = forward.iterator();
+        assertThat(it.next()).isEqualTo(4);
+        assertThat(it.next()).isEqualTo(3);
+        assertThat(it.next()).isEqualTo(2);
+        assertThat(it.next()).isEqualTo(1);
+    }
+
+    @Test
+    void addFirstAndAddLast() {
+        ForwardLinked<Integer> forward = new ForwardLinked<>();
+        forward.addFirst(1);
+        forward.add(1);
+        forward.addFirst(2);
+        forward.addFirst(3);
+        forward.add(3);
+        forward.addFirst(4);
+        Iterator<Integer> it = forward.iterator();
+        assertThat(it.next()).isEqualTo(4);
+        assertThat(it.next()).isEqualTo(3);
+        assertThat(it.next()).isEqualTo(2);
+        assertThat(it.next()).isEqualTo(1);
+        assertThat(it.next()).isEqualTo(1);
+        assertThat(it.next()).isEqualTo(3);
+    }
 }
